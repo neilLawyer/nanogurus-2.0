@@ -133,7 +133,7 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* ── WHO WE ARE ───────────────────────────────────────── */}
+      {/* ── WHO WE ARE + OUR STORY ───────────────────────────── */}
       <section className="bg-[#F9F9F7] py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -141,6 +141,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="mb-16"
           >
             <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-4">
               Who We Are
@@ -149,18 +150,36 @@ export default function HomePage() {
               A community team built on{" "}
               <span className="text-gold">character</span> first.
             </h2>
-            <p className="text-[#374151] text-lg leading-relaxed mb-6">
-              NanoGurus 2.0 is a rookie, community-based 501(c)(3) nonprofit FTC robotics team
-              from Morris Plains, New Jersey. We started with almost nothing — no funding, no
-              experience, and a coach who had moved away. Instead of scaling back, we rebuilt from
-              the ground up.
+            <p className="text-[#374151] text-lg leading-relaxed">
+              NanoGurus 2.0 is a FIRST Tech Challenge (FTC) robotics team based in Morris Plains,
+              New Jersey, made up of 5 members from three different high schools. As a
+              community-based nonprofit, we bring together students from across our area who share
+              a passion for robotics, community impact, and teamwork. We are driven by our motto
+              &ldquo;Building Robots, Building Character&rdquo; and are committed to growing as
+              engineers, individuals, and as a force for good in our community.
             </p>
-            <p className="text-[#6B7280] text-base leading-relaxed mb-8">
-              We compete in FIRST Tech Challenge, but robotics is just the vehicle. Our real mission
-              is to build a lasting STEM culture in our community — one that inspires younger
-              students, connects with professionals, and proves that character drives results.
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-4">
+              Our Story
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A0A0A] mb-6 leading-tight">
+              15 years of history.{" "}
+              <span className="text-gold">Carried forward.</span>
+            </h2>
+            <p className="text-[#374151] text-lg leading-relaxed mb-8">
+              NanoGurus 2.0 carries on the legacy of NanoGurus (Team #4347), an FTC team with
+              15 years of history rooted in our community. When our longtime coach relocated to
+              Boston, a group of dedicated students came together to ensure the NanoGurus name
+              lived on in New Jersey. Today, NanoGurus 2.0 proudly carries that name forward.
             </p>
-            <CTAButton href="/about" variant="filled">Our Full Story →</CTAButton>
+            <CTAButton href="/about" variant="filled">Meet the Team →</CTAButton>
           </motion.div>
         </div>
       </section>
