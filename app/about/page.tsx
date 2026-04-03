@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import { team } from "@/data/team";
+"use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { rosters } from "@/data/team";
 import TeamMemberCard from "@/components/TeamMemberCard";
 import SectionHeading from "@/components/SectionHeading";
-
-export const metadata: Metadata = { title: "Team" };
 
 const goals = [
   "Recruit 5 members",
@@ -20,9 +20,12 @@ const achievements = [
   "34 STEM connections made",
 ];
 
-export default function AboutPage() {
-  const members = team.filter((m) => m.type === "member");
-  const support = team.filter((m) => m.type !== "member");
+export default function TeamPage() {
+  const [activeSeason, setActiveSeason] = useState(rosters[0].season);
+
+  const roster = rosters.find((r) => r.season === activeSeason) ?? rosters[0];
+  const members = roster.members.filter((m) => m.type === "member");
+  const support = roster.members.filter((m) => m.type !== "member");
 
   return (
     <>
@@ -38,27 +41,70 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TEAM MEMBERS */}
-      <section className="bg-[#0A0A0A] py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading label="The Team" title="Meet the" titleGold="Members" />
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-            {members.map((m, i) => (
-              <TeamMemberCard key={m.id} member={m} index={i} />
+      {/* SEASON TABS */}
+      <section className="bg-[#0D0D0D] sticky top-16 z-30 border-b border-[#1A1A1A]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 py-3 overflow-x-auto scrollbar-hide">
+            {rosters.map((r) => (
+              <button
+                key={r.season}
+                onClick={() => setActiveSeason(r.season)}
+                className={`flex-shrink-0 px-5 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold ${
+                  activeSeason === r.season
+                    ? "bg-gold text-black"
+                    : "text-[#9CA3AF] hover:text-[#F9F9F7] hover:bg-[#1A1A1A]"
+                }`}
+              >
+                {r.label}
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* COACHES & MENTORS */}
+      {/* TEAM MEMBERS */}
+      <section className="bg-[#0A0A0A] py-24">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading label={roster.label} title="Meet the" titleGold="Members" center />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSeason + "-members"}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.35 }}
+              className="flex flex-wrap justify-center gap-6"
+            >
+              {members.map((m, i) => (
+                <div key={m.id} className="w-[calc(50%-12px)] sm:w-56">
+                  <TeamMemberCard member={m} index={i} />
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </section>
+
+      {/* COACHES, MENTORS & MASCOT */}
       <section className="bg-[#0D0D0D] py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading label="Leadership" title="Coaches," titleGold="Mentors & Mascot" />
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-            {support.map((m, i) => (
-              <TeamMemberCard key={m.id} member={m} index={i} />
-            ))}
-          </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading label="Leadership" title="Coaches," titleGold="Mentors & Mascot" center />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSeason + "-support"}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.35, delay: 0.05 }}
+              className="flex flex-wrap justify-center gap-6"
+            >
+              {support.map((m, i) => (
+                <div key={m.id} className="w-[calc(50%-12px)] sm:w-56">
+                  <TeamMemberCard member={m} index={i} />
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 
