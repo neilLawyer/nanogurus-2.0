@@ -2,15 +2,20 @@
 import Script from "next/script";
 import { useRef } from "react";
 
+interface ModelViewerElement extends HTMLElement {
+  cameraOrbit: string;
+  fieldOfView: string;
+}
+
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "model-viewer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      "model-viewer": React.DetailedHTMLProps<React.HTMLAttributes<ModelViewerElement>, ModelViewerElement> & {
         src?: string;
         alt?: string;
-        "camera-controls"?: boolean | string;
-        "auto-rotate"?: boolean | string;
+        "camera-controls"?: string;
+        "auto-rotate"?: string;
         "shadow-intensity"?: string;
         exposure?: string;
         style?: React.CSSProperties;
@@ -21,13 +26,12 @@ declare global {
 /* eslint-enable @typescript-eslint/no-namespace */
 
 export default function RobotViewer() {
-  const mvRef = useRef<HTMLElement>(null);
+  const mvRef = useRef<ModelViewerElement>(null);
 
   function resetCamera() {
-    const mv = mvRef.current as any;
-    if (!mv) return;
-    mv.cameraOrbit = "0deg 75deg 105%";
-    mv.fieldOfView = "auto";
+    if (!mvRef.current) return;
+    mvRef.current.cameraOrbit = "0deg 75deg 105%";
+    mvRef.current.fieldOfView = "auto";
   }
 
   return (
@@ -42,7 +46,7 @@ export default function RobotViewer() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-gold/5 blur-3xl rounded-full pointer-events-none z-0" />
 
         <model-viewer
-          ref={mvRef as any}
+          ref={mvRef}
           src="/models/robot.glb"
           alt="NanoGurus 2.0 robot"
           camera-controls=""
