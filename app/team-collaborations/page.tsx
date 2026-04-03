@@ -61,7 +61,7 @@ export default function TeamCollaborationsPage() {
             to collaborate, we&apos;d love to hear from you.
           </p>
           <a
-            href="mailto:nanogurus25@gmail.com"
+            href="mailto:NanoGurus30682@gmail.com"
             className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-gold text-black font-semibold text-base hover:bg-[#D4A800] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2"
           >
             Get in Touch

@@ -98,7 +98,7 @@ export default function SponsorsPage() {
             onSubmit={(e) => {
               e.preventDefault();
               if (email) {
-                window.location.href = `mailto:nanogurus25@gmail.com?subject=Sponsorship Inquiry&body=Hi NanoGurus team, I'm interested in sponsoring your team. My email is: ${email}`;
+                window.location.href = `mailto:NanoGurus30682@gmail.com?subject=Sponsorship Inquiry&body=Hi NanoGurus team, I'm interested in sponsoring your team. My email is: ${email}`;
               }
             }}
             className="flex flex-col sm:flex-row gap-3"

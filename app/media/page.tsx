@@ -95,7 +95,7 @@ export default function MediaPage() {
             onSubmit={(e) => {
               e.preventDefault();
               if (email) {
-                window.location.href = `mailto:nanogurus25@gmail.com?subject=NanoNews Subscription&body=Hi! Please add me to the NanoNews newsletter. My email is: ${email}`;
+                window.location.href = `mailto:NanoGurus30682@gmail.com?subject=NanoNews Subscription&body=Hi! Please add me to the NanoNews newsletter. My email is: ${email}`;
               }
             }}
             className="flex flex-col sm:flex-row gap-3 mb-10"
@@ -118,8 +118,8 @@ export default function MediaPage() {
 
           {/* Contact info */}
           <div className="flex flex-col items-center gap-2 text-sm text-[#6B7280]">
-            <a href="mailto:nanogurus25@gmail.com" className="hover:text-[#0A0A0A] transition-colors duration-200">
-              nanogurus25@gmail.com
+            <a href="mailto:NanoGurus30682@gmail.com" className="hover:text-[#0A0A0A] transition-colors duration-200">
+              NanoGurus30682@gmail.com
             </a>
             <a href="tel:9735800966" className="hover:text-[#0A0A0A] transition-colors duration-200">
               973-580-0966

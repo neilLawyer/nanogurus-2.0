@@ -79,7 +79,7 @@ export default function Navbar() {
 
           {/* Contact CTA */}
           <a
-            href="mailto:nanogurus25@gmail.com"
+            href="mailto:NanoGurus30682@gmail.com"
             className="hidden lg:inline-flex items-center px-5 py-2 rounded-full bg-gold text-black text-sm font-semibold hover:bg-gold-deep transition-colors duration-200 focus-visible:outline-gold"
           >
             Contact
@@ -150,7 +150,7 @@ export default function Navbar() {
             </nav>
             <div className="mt-auto">
               <a
-                href="mailto:nanogurus25@gmail.com"
+                href="mailto:NanoGurus30682@gmail.com"
                 className="block text-center px-5 py-3 rounded-full bg-gold text-black font-semibold hover:bg-gold-deep transition-colors duration-200"
               >
                 Contact Us
