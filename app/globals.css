@@ -1,27 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gold: #F5C400;
+  --gold-deep: #D4A800;
+  --black: #0A0A0A;
+  --off-white: #F9F9F7;
+  --card-dark: #141414;
+  --card-light: #FAFAFA;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--black);
+  color: var(--off-white);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5C400;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #F5C400;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+a, button {
+  transition: all 0.2s ease;
+}
+
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F5C400, #D4A800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Gold border accent on hover */
+.gold-border-hover {
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.gold-border-hover:hover {
+  border-color: #F5C400;
+}
+
+/* Mesh background */
+.mesh-bg {
+  background-image:
+    radial-gradient(at 40% 20%, rgba(245, 196, 0, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(212, 168, 0, 0.05) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(245, 196, 0, 0.05) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(245, 196, 0, 0.03) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(212, 168, 0, 0.05) 0px, transparent 50%);
+}
+
+/* Particle grid */
+.grid-bg {
+  background-image: linear-gradient(rgba(245, 196, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 196, 0, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Horizontal scroll container */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
