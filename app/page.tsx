@@ -178,9 +178,9 @@ export default function HomePage() {
               Our Mission
             </span>
             <blockquote className="font-display text-3xl md:text-5xl lg:text-6xl tracking-wide text-[#F9F9F7] leading-tight">
-              "TO INSPIRE A LASTING{" "}
+              &ldquo;TO INSPIRE A LASTING{" "}
               <span className="text-gold">FIRST ENVIRONMENT</span>{" "}
-              FOR OUR COMMUNITY AND BEYOND."
+              FOR OUR COMMUNITY AND BEYOND.&rdquo;
             </blockquote>
           </motion.div>
         </div>
