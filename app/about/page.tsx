@@ -3,7 +3,7 @@ import { team } from "@/data/team";
 import TeamMemberCard from "@/components/TeamMemberCard";
 import SectionHeading from "@/components/SectionHeading";
 
-export const metadata: Metadata = { title: "About Us" };
+export const metadata: Metadata = { title: "Team" };
 
 const goals = [
   "Recruit 5 members",
@@ -30,32 +30,11 @@ export default function AboutPage() {
       <section className="bg-[#0A0A0A] mesh-bg grid-bg pt-28 pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-4">
-            Who We Are
+            NanoGurus 2.0
           </span>
           <h1 className="font-display text-6xl md:text-8xl tracking-wider text-[#F9F9F7] mb-6">
-            OUR STORY
+            THE TEAM
           </h1>
-        </div>
-      </section>
-
-      {/* STORY */}
-      <section className="bg-[#F9F9F7] py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-[#374151] text-lg leading-relaxed mb-6">
-            We are a rookie, community-based 501(c)(3) nonprofit team located in Morris Plains,
-            New Jersey. We started with just two inexperienced members, no funding, and a coach who
-            had moved away. Instead of lowering expectations, we raised our standards and rebuilt
-            from the ground up — by February 2026, we had become NanoGurus 2.0: an eight-member
-            team defined by passion, strong character, and a mission to create a lasting FIRST
-            environment for our community and beyond.
-          </p>
-          <p className="text-[#6B7280] text-base leading-relaxed">
-            What followed is the kind of first season most teams spend years working toward. We
-            finished 3rd at the Morris Conference Upper Central League Tournament against experienced,
-            multi-year teams, reached 7,000+ people through outreach, raised over $8,000, and built
-            a network of 34 STEM professionals — all in year one. The results speak for themselves,
-            and we&apos;re just getting started.
-          </p>
         </div>
       </section>
 
