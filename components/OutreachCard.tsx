@@ -59,18 +59,7 @@ export default function OutreachCard({
         </div>
 
         <h3 className="font-bold text-[#F9F9F7] text-base leading-snug mb-2">{outreach.title}</h3>
-        <p className="text-[#9CA3AF] text-sm leading-relaxed mb-3 flex-1">{outreach.description}</p>
-
-        {outreach.highlights.length > 0 && (
-          <ul className="space-y-1">
-            {outreach.highlights.map((h, i) => (
-              <li key={i} className="flex items-start gap-2 text-xs text-[#6B7280]">
-                <span className="text-gold mt-0.5 flex-shrink-0">→</span>
-                {h}
-              </li>
-            ))}
-          </ul>
-        )}
+        <p className="text-[#9CA3AF] text-sm leading-relaxed flex-1">{outreach.description}</p>
       </div>
     </motion.div>
   );

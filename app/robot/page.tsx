@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { robots } from "@/data/robot";
 import SectionHeading from "@/components/SectionHeading";
 import CTAButton from "@/components/CTAButton";
+import RobotViewer from "@/components/RobotViewer";
 
 export default function RobotPage() {
   const [activeSeason, setActiveSeason] = useState(robots[0].season);
@@ -41,6 +42,13 @@ export default function RobotPage() {
               {robot.tagline}
             </motion.p>
           </AnimatePresence>
+        </div>
+      </section>
+
+      {/* 3D MODEL VIEWER */}
+      <section className="bg-[#0A0A0A] py-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RobotViewer />
         </div>
       </section>
 

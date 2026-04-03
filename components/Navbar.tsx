@@ -9,9 +9,7 @@ const navLinks = [
   { href: "/about", label: "Team" },
   { href: "/robot", label: "Robot" },
   { href: "/outreaches", label: "Outreaches" },
-  { href: "/stem-connections", label: "STEM" },
   { href: "/awards", label: "Awards" },
-  { href: "/events", label: "Events" },
   { href: "/sponsors", label: "Sponsors" },
   { href: "/media", label: "Media" },
 ];
