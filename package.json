@@ -9,7 +9,6 @@
     "lint": "node node_modules/next/dist/bin/next lint"
   },
   "dependencies": {
-    "@google/model-viewer": "^4.2.0",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "framer-motion": "^12.38.0",
