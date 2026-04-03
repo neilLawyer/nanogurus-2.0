@@ -1,6 +1,7 @@
 "use client";
 import Script from "next/script";
 
+/* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -16,6 +17,7 @@ declare global {
     }
   }
 }
+/* eslint-enable @typescript-eslint/no-namespace */
 
 export default function RobotViewer() {
   return (
@@ -23,7 +25,7 @@ export default function RobotViewer() {
       <Script
         type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
 
       <div className="relative w-full h-[500px] md:h-[650px] rounded-3xl overflow-hidden bg-[#0C0C0C] border border-[#1F1F1F]">
