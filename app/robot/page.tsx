@@ -84,7 +84,7 @@ export default function RobotPage() {
           {/* SUBSYSTEMS */}
           <section className="bg-[#0D0D0D] py-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <SectionHeading label="Hardware" title="Key" titleGold="Subsystems" />
+              <SectionHeading label="Hardware" title="Subsystems" />
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {robot.subsystems.map((s) => (
                   <div

@@ -32,32 +32,17 @@ export const robots: RobotSeason[] = [
       {
         num: "01",
         title: "Intake",
-        desc: "6 compliant wheels for rapid collection. Collects within 50ms of contact.",
+        desc: "Six Compliant Wheels: Our intake uses 6 compliant wheels powered by a NeveRest 3.7 motor, inspired by golf ball collecting machines, to collect artifacts within 0.05 seconds of contact minimizing time spent at the field wall. Current Limiter: An intake current limiter monitors motor draw in real time. When a third artifact causes a current spike, the rollers automatically shut off and our LED traffic light activates, preventing voltage drops and signaling drivers instantly.",
       },
       {
         num: "02",
-        title: "Ramp with Funnels",
-        desc: "3D-printed custom ramp with integrated funnels for smooth artifact transfer.",
+        title: "Transfer",
+        desc: "TPU sweepers with a 1.5:1 gear ratio move artifacts upstream precisely, while 4 compliant wheels driven by a NeveRest 3.7 motor ensure reliable delivery through the system.",
       },
       {
         num: "03",
-        title: "Transfer Stage 1",
-        desc: "TPU sweepers with a 1.5:1 gear ratio to precisely move artifacts upstream.",
-      },
-      {
-        num: "04",
-        title: "Transfer Stage 2",
-        desc: "4 compliant wheels driven by a NeveRest 3.7 motor for reliable delivery.",
-      },
-      {
-        num: "05",
-        title: "Adjustable Hood",
-        desc: "Servo-driven mechanism with custom 3D-printed components. Range: 50°–70°.",
-      },
-      {
-        num: "06",
-        title: "Flywheel",
-        desc: "Steel flywheel with 1.60 lbs added weight to minimize velocity drops under load.",
+        title: "Shooter",
+        desc: "Steel flywheel with 1.60 lbs of added weight minimizes velocity drops under load. A servo-driven adjustable hood with custom 3D-printed components provides a shooting range of 50°–70° for accurate scoring from any zone.",
       },
     ],
     timeline: [
@@ -99,8 +84,7 @@ export const robots: RobotSeason[] = [
         icon: "🔋",
       },
     ],
-    portfolioPath: "/design-portfolio.pdf",
-    // FILE: Drop pages 5-10 of the engineering portfolio as /public/design-portfolio.pdf
+    portfolioPath: null,
   },
   // ADD NEW SEASONS ABOVE THIS LINE — copy the block above and update all fields
 ];
