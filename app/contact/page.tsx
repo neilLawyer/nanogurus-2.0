@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#0A0A0A] pt-28 pb-24">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ export default function ContactPage() {
             <iframe
               src="https://docs.google.com/forms/d/15OxWcjP3SZV7MdgPBrEApoTou7VZDHOmKe_KRtGzfSY/viewform?embedded=true"
               width="100%"
-              height="780"
+              height="920"
               style={{ border: 0, background: "white" }}
               title="Contact Form"
             >
