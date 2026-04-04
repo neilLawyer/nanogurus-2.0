@@ -2,15 +2,13 @@ import Link from "next/link";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "Team" },
   { href: "/robot", label: "Robot" },
   { href: "/outreaches", label: "Outreaches" },
-  { href: "/stem-connections", label: "STEM Connections" },
   { href: "/awards", label: "Awards" },
-  { href: "/events", label: "Events" },
-  { href: "/team-collaborations", label: "Collaborations" },
   { href: "/sponsors", label: "Sponsors" },
   { href: "/media", label: "Media" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Footer() {

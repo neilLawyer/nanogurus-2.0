@@ -59,14 +59,11 @@ const sections = [
   },
 ];
 
-// Placeholder gallery items — replace label with src path when photos are ready
+// Drop team photos here — replace src: "" with the actual image path when ready
 const galleryItems = [
-  { id: 1, label: "Competition Day" },
-  { id: 2, label: "Outreach Event" },
-  { id: 3, label: "Build Season" },
-  { id: 4, label: "Team Meeting" },
-  { id: 5, label: "Regionals" },
-  { id: 6, label: "Community Fair" },
+  { id: 1, src: "/images/team/titlepageimg.png" },
+  { id: 2, src: "/images/team/pic2.png" },
+  { id: 3, src: "/images/team/pic3.png" },
 ];
 
 function GalleryCarousel() {
@@ -88,51 +85,35 @@ function GalleryCarousel() {
     exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0, scale: 0.92 }),
   };
 
-  const prev = (current - 1 + total) % total;
-  const next = (current + 1) % total;
-
   return (
     <section className="bg-[#0A0A0A] py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         <SectionHeading label="Gallery" title="We Love" titleGold="What We Do" />
       </div>
 
-      <div className="relative flex items-center justify-center gap-4 overflow-hidden px-4">
-        {/* Peek left */}
-        <div className="hidden md:block flex-none w-48 lg:w-64 opacity-30 scale-90 transition-all duration-500 pointer-events-none select-none">
-          <div className="aspect-[4/3] rounded-2xl bg-[#111] border border-[#1F1F1F] flex flex-col items-center justify-center text-[#2A2A2A] gap-3">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-            <span className="text-[10px] uppercase tracking-widest">{galleryItems[prev].label}</span>
-          </div>
-        </div>
-
-        {/* Main slide */}
-        <div className="relative flex-none w-full max-w-2xl overflow-hidden rounded-3xl border border-[#1F1F1F]">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={current}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
-            >
-              <div className="aspect-[16/9] bg-[#111] flex flex-col items-center justify-center text-[#333] gap-3">
-                {/* Replace with <Image> when photos are ready */}
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                <span className="text-sm uppercase tracking-widest">{galleryItems[current].label}</span>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Peek right */}
-        <div className="hidden md:block flex-none w-48 lg:w-64 opacity-30 scale-90 transition-all duration-500 pointer-events-none select-none">
-          <div className="aspect-[4/3] rounded-2xl bg-[#111] border border-[#1F1F1F] flex flex-col items-center justify-center text-[#2A2A2A] gap-3">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-            <span className="text-[10px] uppercase tracking-widest">{galleryItems[next].label}</span>
-          </div>
+      {/* Full-width single slide */}
+      <div className="relative w-[50%] mx-auto">
+        <div className="absolute -inset-3 rounded-3xl bg-gold/10 blur-xl pointer-events-none" />
+        <div className="relative overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(245,196,0,0.12)] ring-1 ring-gold/15">
+        <AnimatePresence initial={false} custom={direction} mode="wait">
+          <motion.div
+            key={current}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
+            className="relative w-full aspect-[4/3]"
+          >
+            <Image
+              src={galleryItems[current].src}
+              alt={`Team photo ${current + 1}`}
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+        </AnimatePresence>
         </div>
       </div>
 
@@ -231,7 +212,7 @@ export default function HomePage() {
                 <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-gold/30 via-transparent to-gold/10 blur-md pointer-events-none" />
                 <div className="relative rounded-3xl overflow-hidden border border-gold/30 aspect-[3/2] lg:aspect-auto lg:h-[600px] shadow-[0_0_100px_rgba(245,196,0,0.3)]">
                   <Image
-                    src="/images/team/titlepageimg.png"
+                    src="/images/team/titlepicfinal.png"
                     alt="NanoGurus 2.0 team"
                     fill
                     className="object-cover object-bottom"
@@ -326,9 +307,11 @@ export default function HomePage() {
               Our Mission
             </span>
             <blockquote className="font-display text-3xl md:text-5xl lg:text-6xl tracking-wide text-[#F9F9F7] leading-tight">
-              &ldquo;TO INSPIRE A LASTING{" "}
-              <span className="text-gold">FIRST ENVIRONMENT</span>{" "}
-              FOR OUR COMMUNITY AND BEYOND.&rdquo;
+              INSPIRING STUDENTS TO DISCOVER THE JOY OF{" "}
+              <span className="text-gold">ROBOTICS</span>
+              , DEVELOP REAL-WORLD SKILLS, AND MAKE A{" "}
+              <span className="text-gold">LASTING IMPACT</span>{" "}
+              IN THEIR COMMUNITIES.
             </blockquote>
           </motion.div>
         </div>
@@ -390,7 +373,7 @@ export default function HomePage() {
           </div>
           <div className="text-center mt-10">
             <Link
-              href="/sponsors"
+              href="/contact"
               className="text-sm text-[#6B7280] hover:text-[#0A0A0A] transition-colors duration-200 underline underline-offset-4"
             >
               Become a Sponsor →
