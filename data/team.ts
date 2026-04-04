@@ -57,8 +57,8 @@ const support: TeamMember[] = [
 export const rosters: SeasonRoster[] = [
   // ── ADD NEW SEASON AT THE TOP ──────────────────────────────────────────────
   {
-    season: "2025-26",
-    label: "2025–26 Season",
+    season: "2026-27",
+    label: "2026–27 Season",
     members: [
       {
         id: "samanyu-h",
@@ -109,8 +109,8 @@ export const rosters: SeasonRoster[] = [
     ],
   },
   {
-    season: "2024-25",
-    label: "2024–25 Season",
+    season: "2025-26",
+    label: "2025–26 Season",
     members: [
       {
         id: "samanyu-h",
