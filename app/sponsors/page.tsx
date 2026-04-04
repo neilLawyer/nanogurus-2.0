@@ -1,11 +1,9 @@
 "use client";
-import { useState } from "react";
 import { sponsors } from "@/data/sponsors";
 import SponsorCard from "@/components/SponsorCard";
 import SectionHeading from "@/components/SectionHeading";
 
 export default function SponsorsPage() {
-  const [email, setEmail] = useState("");
 
   const gold = sponsors.filter((s) => s.tier === "gold");
   const silver = sponsors.filter((s) => s.tier === "silver");

@@ -1,10 +1,8 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
 
 export default function MediaPage() {
-  const [email, setEmail] = useState("");
 
   return (
     <>
