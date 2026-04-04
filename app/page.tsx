@@ -1,6 +1,8 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import SectionHeading from "@/components/SectionHeading";
 import { sponsors } from "@/data/sponsors";
@@ -57,65 +59,189 @@ const sections = [
   },
 ];
 
+// Placeholder gallery items — replace label with src path when photos are ready
+const galleryItems = [
+  { id: 1, label: "Competition Day" },
+  { id: 2, label: "Outreach Event" },
+  { id: 3, label: "Build Season" },
+  { id: 4, label: "Team Meeting" },
+  { id: 5, label: "Regionals" },
+  { id: 6, label: "Community Fair" },
+];
+
+function GalleryCarousel() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const total = galleryItems.length;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrent((prev) => (prev + 1) % total);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [total]);
+
+  const variants = {
+    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0, scale: 0.92 }),
+    center: { x: 0, opacity: 1, scale: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0, scale: 0.92 }),
+  };
+
+  const prev = (current - 1 + total) % total;
+  const next = (current + 1) % total;
+
+  return (
+    <section className="bg-[#0A0A0A] py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+        <SectionHeading label="Gallery" title="We Love" titleGold="What We Do" />
+      </div>
+
+      <div className="relative flex items-center justify-center gap-4 overflow-hidden px-4">
+        {/* Peek left */}
+        <div className="hidden md:block flex-none w-48 lg:w-64 opacity-30 scale-90 transition-all duration-500 pointer-events-none select-none">
+          <div className="aspect-[4/3] rounded-2xl bg-[#111] border border-[#1F1F1F] flex flex-col items-center justify-center text-[#2A2A2A] gap-3">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            <span className="text-[10px] uppercase tracking-widest">{galleryItems[prev].label}</span>
+          </div>
+        </div>
+
+        {/* Main slide */}
+        <div className="relative flex-none w-full max-w-2xl overflow-hidden rounded-3xl border border-[#1F1F1F]">
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={current}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
+            >
+              <div className="aspect-[16/9] bg-[#111] flex flex-col items-center justify-center text-[#333] gap-3">
+                {/* Replace with <Image> when photos are ready */}
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                <span className="text-sm uppercase tracking-widest">{galleryItems[current].label}</span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Peek right */}
+        <div className="hidden md:block flex-none w-48 lg:w-64 opacity-30 scale-90 transition-all duration-500 pointer-events-none select-none">
+          <div className="aspect-[4/3] rounded-2xl bg-[#111] border border-[#1F1F1F] flex flex-col items-center justify-center text-[#2A2A2A] gap-3">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            <span className="text-[10px] uppercase tracking-widest">{galleryItems[next].label}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dot indicators */}
+      <div className="flex items-center justify-center gap-2 mt-6">
+        {galleryItems.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+            className={`rounded-full transition-all duration-300 ${
+              i === current ? "w-6 h-2 bg-gold" : "w-2 h-2 bg-[#333] hover:bg-[#555]"
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A] mesh-bg grid-bg">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0A0A] mesh-bg grid-bg">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-gold/3 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-4"
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-semibold uppercase tracking-widest">
-              FTC Team #30682 · Morris Plains, NJ
-            </span>
-          </motion.div>
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-32">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-28">
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-[clamp(4rem,12vw,9rem)] leading-none tracking-wider text-[#F9F9F7] mb-2"
-          >
-            BUILDING
-            <br />
-            ROBOTS.
-          </motion.h1>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-display text-[clamp(4rem,12vw,9rem)] leading-none tracking-wider text-gold mb-8"
-          >
-            BUILDING
-            <br />
-            CHARACTER.
-          </motion.h1>
+            {/* Left — Text */}
+            <div className="flex-1 text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-4"
+              >
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-semibold uppercase tracking-widest">
+                  FTC Team #30682 · Morris Plains, NJ
+                </span>
+              </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="text-[#9CA3AF] text-base md:text-lg mb-10 max-w-xl mx-auto"
-          >
-            NanoGurus 2.0 · FIRST Tech Challenge · Morris Plains, NJ
-          </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-display text-[clamp(3.5rem,7.5vw,8rem)] leading-none tracking-wider text-[#F9F9F7] mb-2"
+              >
+                BUILDING
+                <br />
+                ROBOTS.
+              </motion.h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="font-display text-[clamp(3.5rem,7.5vw,8rem)] leading-none tracking-wider text-gold mb-8"
+              >
+                BUILDING
+                <br />
+                CHARACTER.
+              </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <CTAButton href="/about" variant="filled">Meet the Team</CTAButton>
-            <CTAButton href="/robot" variant="outline">View Our Robot</CTAButton>
-          </motion.div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.35 }}
+                className="text-[#9CA3AF] text-base md:text-lg mb-10 max-w-md"
+              >
+                NanoGurus 2.0 · FIRST Tech Challenge · Morris Plains, NJ
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.45 }}
+                className="flex flex-col sm:flex-row items-start gap-4"
+              >
+                <CTAButton href="/about" variant="filled">Meet the Team</CTAButton>
+                <CTAButton href="/robot" variant="outline">View Our Robot</CTAButton>
+              </motion.div>
+            </div>
+
+            {/* Right — Group Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex-[3] w-full lg:-mr-24"
+            >
+              {/* Gold glow wrapper */}
+              <div className="relative">
+                <div className="absolute -inset-3 rounded-[2rem] bg-gold/20 blur-2xl pointer-events-none" />
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-gold/30 via-transparent to-gold/10 blur-md pointer-events-none" />
+                <div className="relative rounded-3xl overflow-hidden border border-gold/30 aspect-[3/2] lg:aspect-auto lg:h-[600px] shadow-[0_0_100px_rgba(245,196,0,0.3)]">
+                  <Image
+                    src="/images/team/titlepageimg.png"
+                    alt="NanoGurus 2.0 team"
+                    fill
+                    className="object-cover object-bottom"
+                    priority
+                  />
+                  <div className="absolute inset-0 rounded-3xl ring-1 ring-gold/20" />
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         <motion.div
@@ -183,6 +309,9 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* ── PHOTO GALLERY CAROUSEL ───────────────────────────── */}
+      <GalleryCarousel />
 
       {/* ── OUR MISSION ──────────────────────────────────────── */}
       <section className="bg-[#0A0A0A] py-24 border-y border-[#1A1A1A]">

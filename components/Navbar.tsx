@@ -76,12 +76,12 @@ export default function Navbar() {
           </ul>
 
           {/* Contact CTA */}
-          <a
-            href="mailto:NanoGurus30682@gmail.com"
+          <Link
+            href="/contact"
             className="hidden lg:inline-flex items-center px-5 py-2 rounded-full bg-gold text-black text-sm font-semibold hover:bg-gold-deep transition-colors duration-200 focus-visible:outline-gold"
           >
             Contact
-          </a>
+          </Link>
 
           {/* Hamburger */}
           <button
@@ -147,12 +147,12 @@ export default function Navbar() {
               </ul>
             </nav>
             <div className="mt-auto">
-              <a
-                href="mailto:NanoGurus30682@gmail.com"
+              <Link
+                href="/contact"
                 className="block text-center px-5 py-3 rounded-full bg-gold text-black font-semibold hover:bg-gold-deep transition-colors duration-200"
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

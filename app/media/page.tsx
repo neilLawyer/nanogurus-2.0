@@ -91,35 +91,19 @@ export default function MediaPage() {
           <p className="text-[#374151] mb-8 leading-relaxed">
             Get updates on our outreaches, robot progress, STEM connections, and upcoming events.
           </p>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (email) {
-                window.location.href = `mailto:NanoGurus30682@gmail.com?subject=NanoNews Subscription&body=Hi! Please add me to the NanoNews newsletter. My email is: ${email}`;
-              }
-            }}
-            className="flex flex-col sm:flex-row gap-3 mb-10"
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address"
-              required
-              className="flex-1 px-5 py-3 rounded-full bg-white border border-[#D1D5DB] text-[#0A0A0A] placeholder-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm"
-            />
-            <button
-              type="submit"
-              className="px-7 py-3 rounded-full bg-gold text-black font-semibold text-sm hover:bg-[#D4A800] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 whitespace-nowrap"
+          <div className="flex justify-center mb-10">
+            <a
+              href="/contact"
+              className="px-8 py-3.5 rounded-full bg-gold text-black font-semibold text-sm hover:bg-[#D4A800] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2"
             >
-              Subscribe
-            </button>
-          </form>
+              Get in Touch
+            </a>
+          </div>
 
           {/* Contact info */}
           <div className="flex flex-col items-center gap-2 text-sm text-[#6B7280]">
-            <a href="mailto:NanoGurus30682@gmail.com" className="hover:text-[#0A0A0A] transition-colors duration-200">
-              NanoGurus30682@gmail.com
+            <a href="/contact" className="hover:text-[#0A0A0A] transition-colors duration-200">
+              Contact Us
             </a>
             <a href="tel:9735800966" className="hover:text-[#0A0A0A] transition-colors duration-200">
               973-580-0966

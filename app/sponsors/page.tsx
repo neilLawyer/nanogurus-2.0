@@ -94,30 +94,14 @@ export default function SponsorsPage() {
             Interested in supporting NanoGurus 2.0? We&apos;d love to connect about sponsorship
             opportunities and how your organization can help us grow.
           </p>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (email) {
-                window.location.href = `mailto:NanoGurus30682@gmail.com?subject=Sponsorship Inquiry&body=Hi NanoGurus team, I'm interested in sponsoring your team. My email is: ${email}`;
-              }
-            }}
-            className="flex flex-col sm:flex-row gap-3"
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address"
-              required
-              className="flex-1 px-5 py-3 rounded-full bg-white border border-[#D1D5DB] text-[#0A0A0A] placeholder-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm"
-            />
-            <button
-              type="submit"
-              className="px-7 py-3 rounded-full bg-[#0A0A0A] text-white font-semibold text-sm hover:bg-[#1A1A1A] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 whitespace-nowrap"
+          <div className="flex justify-center">
+            <a
+              href="/contact"
+              className="px-8 py-3.5 rounded-full bg-[#0A0A0A] text-white font-semibold text-sm hover:bg-[#1A1A1A] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2"
             >
               Get in Touch
-            </button>
-          </form>
+            </a>
+          </div>
         </div>
       </section>
     </>
