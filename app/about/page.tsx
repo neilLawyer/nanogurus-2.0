@@ -64,7 +64,7 @@ export default function TeamPage() {
 
       {/* TEAM MEMBERS */}
       <section className="bg-[#0A0A0A] py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading label={roster.label} title="Meet the" titleGold="Members" center />
           <AnimatePresence mode="wait">
             <motion.div
@@ -73,10 +73,15 @@ export default function TeamPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.35 }}
-              className="flex flex-wrap justify-center gap-6"
+              className="grid grid-cols-6 gap-6"
             >
               {members.map((m, i) => (
-                <div key={m.id} className="w-[calc(50%-12px)] sm:w-56">
+                <div
+                  key={m.id}
+                  className={`col-span-6 sm:col-span-3 lg:col-span-2${
+                    i === 3 ? " lg:col-start-2" : i === 4 ? " lg:col-start-4" : ""
+                  }`}
+                >
                   <TeamMemberCard member={m} index={i} />
                 </div>
               ))}

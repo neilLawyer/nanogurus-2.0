@@ -28,16 +28,16 @@ export default function OutreachCard({
       className="group bg-[#141414] border border-[#1F1F1F] rounded-2xl overflow-hidden card-hover gold-border-hover flex flex-col"
     >
       {outreach.image ? (
-        <div className="relative h-44 w-full overflow-hidden">
+        <div className="relative h-64 w-full overflow-hidden bg-[#0F0F0F]">
           <Image
             src={outreach.image}
             alt={outreach.title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-contain p-2 rounded-xl"
           />
         </div>
       ) : (
-        <PlaceholderImage className="h-44 w-full rounded-none" label="Photo coming soon" />
+        <PlaceholderImage className="h-64 w-full rounded-none" label="Photo coming soon" />
       )}
 
       <div className="p-5 flex flex-col flex-1">

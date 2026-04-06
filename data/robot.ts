@@ -1,7 +1,13 @@
+export type SubsystemFeature = {
+  label: string;
+  desc: string;
+};
+
 export type Subsystem = {
   num: string;
   title: string;
-  desc: string;
+  features: SubsystemFeature[];
+  images: string[];
 };
 
 export type CodeHighlight = {
@@ -32,17 +38,54 @@ export const robots: RobotSeason[] = [
       {
         num: "01",
         title: "Intake",
-        desc: "Six Compliant Wheels: Our intake uses 6 compliant wheels powered by a NeveRest 3.7 motor, inspired by golf ball collecting machines, to collect artifacts within 0.05 seconds of contact minimizing time spent at the field wall. Current Limiter: An intake current limiter monitors motor draw in real time. When a third artifact causes a current spike, the rollers automatically shut off and our LED traffic light activates, preventing voltage drops and signaling drivers instantly.",
+        features: [
+          {
+            label: "Six Compliant Wheels",
+            desc: "Our intake uses 6 compliant wheels powered by a NeveRest 3.7 motor, inspired by golf ball collecting machines, to collect artifacts within 0.05 seconds of contact minimizing time spent at the field wall.",
+          },
+          {
+            label: "Current Limiter",
+            desc: "An intake current limiter monitors motor draw in real time. When a third artifact causes a current spike, the rollers automatically shut off and our LED traffic light activates, preventing voltage drops and signaling drivers instantly.",
+          },
+        ],
+        images: ["/images/robot_parts/INTAKE_ASSEMBLY.jpg"],
       },
       {
         num: "02",
         title: "Transfer",
-        desc: "TPU sweepers with a 1.5:1 gear ratio move artifacts upstream precisely, while 4 compliant wheels driven by a NeveRest 3.7 motor ensure reliable delivery through the system.",
+        features: [
+          {
+            label: "2-Stage System",
+            desc: "Our two-stage transfer achieves continuous contact from intake to shooter. Stage 1 uses 3D printed TPU sweepers at a 1.5:1 gear ratio to increase torque and reduce jams, while Stage 2 uses 4 compliant wheels powered by a NeveRest 3.7 motor for fast, consistent feeding directly into the flywheel.",
+          },
+          {
+            label: "Ramp with Funnels",
+            desc: "Our custom 3D printed ramp with integrated funnels guides artifacts smoothly between transfer stages, eliminating dead spots and jamming. The funnel geometry ensures consistent artifact alignment into the shooter, allowing us to achieve an average full cycle time of 9 seconds.",
+          },
+        ],
+        images: ["/images/robot_parts/FULL_BOT_DESIGN POSTER.jpg"],
       },
       {
         num: "03",
-        title: "Shooter",
-        desc: "Steel flywheel with 1.60 lbs of added weight minimizes velocity drops under load. A servo-driven adjustable hood with custom 3D-printed components provides a shooting range of 50°–70° for accurate scoring from any zone.",
+        title: "Outtake",
+        features: [
+          {
+            label: "Adjustable Hood",
+            desc: "A servo-driven gear dynamically adjusts the hood angle between 50°–70°, enabling accurate scoring from both the near and far zones without repositioning.",
+          },
+          {
+            label: "Steel Flywheel",
+            desc: "Our steel flywheel adds 1.60 lbs of rotational inertia with 7mm of compression, reducing velocity drops per artifact from ~250 TPS and cutting shooting time per 3-artifact cycle from 0.73 to 0.27 seconds.",
+          },
+          {
+            label: "Custom PIDF + Feedforward",
+            desc: "A gain-scheduled PIDF controller paired with predictive feedforward injection maintains target flywheel velocity regardless of battery voltage or shooting load, maximizing consistency across all match conditions.",
+          },
+        ],
+        images: [
+          "/images/robot_parts/SHOOTER_ASSEMBLY.jpg",
+          "/images/robot_parts/SHOOTER_ASSEMBLY_pt2.jpg",
+        ],
       },
     ],
     timeline: [

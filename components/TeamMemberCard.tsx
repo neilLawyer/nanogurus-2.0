@@ -38,21 +38,20 @@ export default function TeamMemberCard({
           <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl bg-gold/10 -z-10" />
 
           {/* Card body */}
-          <div className="relative bg-[#111] rounded-2xl px-6 pt-8 pb-6 flex flex-col items-center text-center overflow-hidden">
+          <div className="relative bg-[#111] rounded-2xl px-6 pt-6 pb-5 flex flex-col items-center text-center overflow-hidden">
             {/* Subtle top shimmer */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
             {/* Avatar */}
-            <div className="relative mb-5">
-              <div className="w-24 h-24 rounded-full p-[2px] bg-gradient-to-br from-gold/40 to-[#2A2A2A] group-hover:from-gold group-hover:to-gold/30 transition-all duration-500">
-                <div className="w-full h-full rounded-full overflow-hidden bg-[#1A1A1A]">
+            <div className="relative mb-4">
+              <div className="w-28 h-28 rounded-full p-[2px] bg-gradient-to-br from-gold/40 to-[#2A2A2A] group-hover:from-gold group-hover:to-gold/30 transition-all duration-500">
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-[#1A1A1A]">
                   {member.image ? (
                     <Image
                       src={member.image}
                       alt={member.name}
-                      width={96}
-                      height={96}
-                      className="object-cover w-full h-full"
+                      fill
+                      className={`object-cover ${member.imagePosition ?? "object-top"}`}
                     />
                   ) : (
                     <PlaceholderAvatar size="lg" name={member.name} />
@@ -73,7 +72,7 @@ export default function TeamMemberCard({
 
             {/* Bio or badge */}
             {member.bio ? (
-              <p className="text-[#9CA3AF] text-xs mt-4 leading-relaxed line-clamp-3">
+              <p className="text-[#9CA3AF] text-xs mt-4 leading-relaxed">
                 {member.bio}
               </p>
             ) : (

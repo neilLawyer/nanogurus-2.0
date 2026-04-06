@@ -64,6 +64,9 @@ const galleryItems = [
   { id: 1, src: "/images/team/titlepageimg.png" },
   { id: 2, src: "/images/team/pic2.png" },
   { id: 3, src: "/images/team/pic3.png" },
+  { id: 4, src: "/images/team/homepage6.jpeg" },
+  { id: 5, src: "/images/team/homepage_6_2.jpeg" },
+  { id: 6, src: "/images/team/homepage_6_3.jpeg" },
 ];
 
 function GalleryCarousel() {

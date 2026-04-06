@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { robots } from "@/data/robot";
 import SectionHeading from "@/components/SectionHeading";
 import CTAButton from "@/components/CTAButton";
@@ -89,13 +90,38 @@ export default function RobotPage() {
                 {robot.subsystems.map((s) => (
                   <div
                     key={s.num}
-                    className="bg-[#141414] border border-[#1F1F1F] rounded-2xl p-6 hover:border-gold/30 transition-colors duration-300 group"
+                    className="bg-[#141414] border border-[#1F1F1F] rounded-2xl overflow-hidden hover:border-gold/30 transition-colors duration-300 group flex flex-col"
                   >
-                    <div className="font-display text-5xl text-gold/20 group-hover:text-gold/40 transition-colors duration-300 mb-3">
-                      {s.num}
+                    {/* Images */}
+                    {s.images.length > 0 && (
+                      <div className={`grid gap-1 bg-[#0F0F0F] ${s.images.length > 1 ? "grid-cols-2 pt-6 px-2" : "grid-cols-1"}`}>
+                        {s.images.map((src, idx) => (
+                          <div key={idx} className={`relative ${s.images.length > 1 ? "aspect-[1/1]" : "aspect-[4/3]"}`}>
+                            <Image
+                              src={src}
+                              alt={`${s.title} part ${idx + 1}`}
+                              fill
+                              className="object-contain p-3"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className={`p-6 ${s.images.length > 1 ? "mt-auto" : ""}`}>
+                      <div className="font-display text-5xl text-gold/20 group-hover:text-gold/40 transition-colors duration-300 mb-3">
+                        {s.num}
+                      </div>
+                      <h3 className="font-bold text-[#F9F9F7] text-lg mb-4">{s.title}</h3>
+                      <div className="space-y-3">
+                        {s.features.map((f) => (
+                          <div key={f.label}>
+                            <span className="text-gold text-xs font-semibold uppercase tracking-wider">{f.label}: </span>
+                            <span className="text-[#9CA3AF] text-sm leading-relaxed">{f.desc}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <h3 className="font-bold text-[#F9F9F7] text-lg mb-2">{s.title}</h3>
-                    <p className="text-[#9CA3AF] text-sm leading-relaxed">{s.desc}</p>
                   </div>
                 ))}
               </div>

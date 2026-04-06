@@ -23,7 +23,7 @@ export const outreaches: Outreach[] = [
       "Drove FTC robots",
       "3 FLL teams starting next season",
     ],
-    image: null,
+    image: "/images/team/ParGift_outreach.jpeg",
     category: "school",
   },
   {
@@ -33,7 +33,7 @@ export const outreaches: Outreach[] = [
     date: null,
     description: "Community outreach introducing scouts to STEM and FTC robotics.",
     highlights: [],
-    image: null,
+    image: "/images/team/MontvilleBoyScouts_outreach.jpg",
     category: "community",
   },
   {
@@ -46,7 +46,7 @@ export const outreaches: Outreach[] = [
       "Distributed custom FIRST bookmarks",
       "Answered questions about our personal experiences",
     ],
-    image: null,
+    image: "/images/team/Diwali_outreach.jpg",
     category: "cultural",
   },
   {
@@ -60,7 +60,7 @@ export const outreaches: Outreach[] = [
       "Collected interest forms",
       "Shared FIRST information with families",
     ],
-    image: null,
+    image: "/images/team/Trunk_ortreat_outreach.jpg",
     category: "community",
   },
   {
@@ -75,7 +75,7 @@ export const outreaches: Outreach[] = [
       "Learned about FLL and FTC",
       "Led to invitation to Lake Hiawatha STEAM Fair",
     ],
-    image: null,
+    image: "/images/team/Nortvail_outreach.jpg",
     category: "school",
   },
   {
@@ -90,7 +90,7 @@ export const outreaches: Outreach[] = [
       "FLL-inspired challenges",
       "Recruited a new team member",
     ],
-    image: null,
+    image: "/images/team/FallFestival_outreach.jpg",
     category: "community",
   },
   // ADD NEW OUTREACH EVENTS HERE — copy an object above and fill in the fields
